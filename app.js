@@ -14,6 +14,14 @@ const instance = new Razorpay({
 app.use(cors());
 app.use(express.json());
 // });
+app.get("/", (req, res) => {
+  res.json({
+    sitemap: {
+      "/api/payment": "to create orders",
+      "/api/payment/verify": "to verify payments"
+    }
+  })
+})
 app.post("/api/payment", (req, res) => {
   params = req.body;
   instance.orders
